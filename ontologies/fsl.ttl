@@ -10,8 +10,8 @@
 #################################################################
 
 <http://www.softlang.org/ontologies/sle>
-	rdf:type owl:Ontology ;
-	rdfs:comment "Taxonomy of software language engineering formalisms and approaches"@en .
+    rdf:type owl:Ontology ;
+    rdfs:comment "Taxonomy of software language engineering formalisms and approaches"@en .
 
 #################################################################
 # Classes (categories)
@@ -70,6 +70,13 @@
     rdfs:subClassOf :LambdaCalculus ;
     owl:sameAs <https://en.wikipedia.org/wiki/Lambda_cube> ;
     rdfs:comment "typed lambda calculus family"@en .
+
+:ClassicalLambdaCalculus
+    a owl:Class ;
+    rdfs:label "Classical lambda calculus"@en ;
+    rdfs:subClassOf :LambdaCalculus ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Classical_logic#Lambda_calculi> ;
+    rdfs:comment "family of lambda calculi corresponding to classical logic"@en .
 
 :TypeTheory
     a owl:Class ;
@@ -149,11 +156,23 @@
     owl:sameAs <https://en.wikipedia.org/wiki/Context-free_grammar> ;
     rdfs:comment "grammar with context-free productions"@en .
 
+:RegularGrammar
+    a owl:NamedIndividual , :GenerativeGrammar ;
+    rdfs:label "Regular grammar"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Regular_grammar> ;
+    rdfs:comment "grammar for regular languages"@en .
+
 :ParsingExpressionGrammar
     a owl:NamedIndividual , :AnalyticGrammar ;
     rdfs:label "Parsing expression grammar"@en ;
     owl:sameAs <https://en.wikipedia.org/wiki/Parsing_expression_grammar> ;
     rdfs:comment "recognition-based formal grammar"@en .
+
+:TDPLGrammar
+    a owl:NamedIndividual , :AnalyticGrammar ;
+    rdfs:label "TDPL grammar"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Top-down_parsing_language> ;
+    rdfs:comment "recognition-based grammar in the top-down parsing language formalism"@en .
 
 :ExtendedBackusNaurForm
     a owl:NamedIndividual , :Metalanguage ;
@@ -161,11 +180,11 @@
     owl:sameAs <https://en.wikipedia.org/wiki/Extended_Backus-Naur_form> ;
     rdfs:comment "metalanguage for grammar notation"@en .
 
-:RegularGrammar
-    a owl:NamedIndividual , :GenerativeGrammar ;
-    rdfs:label "Regular grammar"@en ;
-    owl:sameAs <https://en.wikipedia.org/wiki/Regular_grammar> ;
-    rdfs:comment "grammar for regular languages"@en .
+:BackusNaurForm
+    a owl:NamedIndividual , :Metalanguage ;
+    rdfs:label "Backus-Naur form"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form> ;
+    rdfs:comment "metalanguage for expressing context-free grammars"@en .
 
 :AttributeGrammar
     a owl:NamedIndividual , :FormalGrammar , :SyntaxDirectedTranslationApproach ;
@@ -179,14 +198,32 @@
     owl:sameAs <https://en.wikipedia.org/wiki/Rewriting#Term_rewriting_systems> ;
     rdfs:comment "rewriting system over algebraic terms"@en .
 
+:GraphRewritingSystem
+    a owl:NamedIndividual , :AbstractRewritingSystem ;
+    rdfs:label "Graph rewriting system"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Graph_rewriting> ;
+    rdfs:comment "rewriting system based on graph transformation rules"@en .
+
+:TreeTransducer
+    a owl:NamedIndividual , :ProgramTransformationApproach , :SyntaxDirectedTranslationApproach ;
+    rdfs:label "Tree transducer"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Tree_transducer> ;
+    rdfs:comment "formalism for syntax-directed transformation of trees"@en .
+
 :UntypedLambdaCalculus
-    a owl:NamedIndividual , :LambdaCalculus ;
+    a owl:NamedIndividual , :LambdaCalculus , :ClassicalLambdaCalculus ;
     rdfs:label "Untyped lambda calculus"@en ;
     owl:sameAs <https://en.wikipedia.org/wiki/Lambda_calculus> ;
     rdfs:comment "lambda calculus without types"@en .
 
+:LambdaMuCalculus
+    a owl:NamedIndividual , :LambdaCalculus ;
+    rdfs:label "Lambda-mu calculus"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Lambda-mu_calculus> ;
+    rdfs:comment "lambda calculus for classical computation with named continuations"@en .
+
 :SimplyTypedLambdaCalculus
-    a owl:NamedIndividual , :LambdaCube , :TypeTheory ;
+    a owl:NamedIndividual , :LambdaCube , :TypeTheory , :ClassicalLambdaCalculus ;
     rdfs:label "Simply typed lambda calculus"@en ;
     owl:sameAs <https://en.wikipedia.org/wiki/Simply_typed_lambda_calculus> ;
     rdfs:comment "typed lambda calculus with simple types"@en .
@@ -227,20 +264,44 @@
     owl:sameAs <https://en.wikipedia.org/wiki/Calculus_of_communicating_systems> ;
     rdfs:comment "calculus for communicating concurrent systems"@en .
 
-:UMLStateMachine
-    a owl:NamedIndividual , :ModelingLanguage ;
-    rdfs:label "UML state machine"@en ;
-    owl:sameAs <https://en.wikipedia.org/wiki/UML_state_machine> ;
-    rdfs:comment "behavioral state machine notation in UML"@en .
-
 :HoareLogic
     a owl:NamedIndividual , :ProgramLogic ;
     rdfs:label "Hoare logic"@en ;
     owl:sameAs <https://en.wikipedia.org/wiki/Hoare_logic> ;
     rdfs:comment "program logic using Hoare triples"@en .
 
+:SeparationLogic
+    a owl:NamedIndividual , :ProgramLogic ;
+    rdfs:label "Separation logic"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Separation_logic> ;
+    rdfs:comment "program logic for reasoning about mutable heap structures"@en .
+
+:ALC
+    a owl:NamedIndividual , :DescriptionLogic ;
+    rdfs:label "ALC"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Description_logic> ;
+    rdfs:comment "basic attributional description logic with complement"@en .
+
+:ELPlusPlus
+    a owl:NamedIndividual , :DescriptionLogic ;
+    rdfs:label "EL++"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/EL%2B%2B> ;
+    rdfs:comment "lightweight description logic underlying the OWL 2 EL profile"@en .
+
 :DependencyGrammar
     a owl:NamedIndividual , :FormalGrammar ;
     rdfs:label "Dependency grammar"@en ;
     owl:sameAs <https://en.wikipedia.org/wiki/Dependency_grammar> ;
     rdfs:comment "grammar based on dependency relations"@en .
+
+:UMLStateMachine
+    a owl:NamedIndividual , :ModelingLanguage ;
+    rdfs:label "UML state machine"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/UML_state_machine> ;
+    rdfs:comment "behavioral state machine notation in UML"@en .
+
+:PetriNet
+    a owl:NamedIndividual , :ModelingLanguage ;
+    rdfs:label "Petri net"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Petri_net> ;
+    rdfs:comment "mathematical modeling language for distributed systems"@en .
