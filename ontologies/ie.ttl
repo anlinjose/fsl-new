@@ -1,3 +1,9 @@
+@prefix ae: <http://www.softlang.org/ontologies/ae#> .
+@prefix ce: <http://www.softlang.org/ontologies/ce#> .
+@prefix fe: <http://www.softlang.org/ontologies/fe#> .
+@prefix le: <http://www.softlang.org/ontologies/le#> .
+@prefix pe: <http://www.softlang.org/ontologies/pe#> .
+@prefix re: <http://www.softlang.org/ontologies/re#> .
 @prefix : <http://www.softlang.org/ontologies/ie#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -35,3 +41,75 @@
     tbox:object tbox:IssueEntity ;
     tbox:critique "Illustrative example only: the reviewed assertion may merit reconsideration with focus on its object constituent."@en ;
     tbox:suggestion "No ontology change requested; this example exists only to illustrate that tbox:subject, tbox:predicate, and tbox:object designate roles within an assertion rather than the overall issue target."@en .
+
+:tboxCommentingIssue a tbox:IssueEntity ;
+    tbox:target <http://www.softlang.org/ontologies/tbox> ;
+    tbox:critique "Commenting may be inconsistent."@en ;
+    tbox:suggestion "Enforce the newly documented commenting policy within the entire ontology."@en .
+
+:tboxFormattingIssue a tbox:IssueEntity ;
+    tbox:target <http://www.softlang.org/ontologies/tbox> ;
+    tbox:critique "Unpoliced formatting due to automatic processing may complicate human review."@en ;
+    tbox:suggestion "Enforce the newly documented formatting policy within the entire ontology."@en .
+
+:conformsToIssue a tbox:IssueEntity ;
+    tbox:target tbox:conformsTo ;
+    tbox:target tbox:hasConformingArtifact ;
+    tbox:critique "'tbox:hasConformingArtifact' is arguably not the best name for the inverse of 'conformsTo'. Conformance is best complemented by classification."@en ;
+    tbox:suggestion "Rename 'tbox:hasConformingArtifact' to 'tbox:classifies'. Make labels and comments of the affected property declarations align with the change."@en .
+
+:describesIssue a tbox:IssueEntity ;
+    tbox:target tbox:describesArtifactKind ;
+    tbox:target tbox:describesArtifact ;
+    tbox:target tbox:isDescribedByArtifact ;
+    tbox:critique "'tbox:describesArtifactKind' is used, but not declared. 'tbox:describesArtifact' and its inverse 'tbox:isDescribedByArtifact' is declared, but not used. Also, the names are lengthy in mentioning 'Artifact'. Also, semantically, the properties are about something more specific, i.e., classification (with conformance as its inverse)."@en ;
+    tbox:suggestion "The property declarations for 'tbox:describesArtifact' and 'tbox:isDescribedByArtifact' are to be removed and the uses of 'tbox:describesArtifactKind' are to be replaced by 'tbox:classifies'."@en .
+
+:hasReferenceGeneralizationIssue a tbox:IssueEntity ;
+    tbox:subject tbox:hasReferenceEntity ;
+    tbox:predicate rdfs:domain ;
+    tbox:object ce:TechnologicalSpace ;
+    tbox:critique "We only have worked on literature references for technological spaces so far, but that's not a restriction to go forward with."@en ;
+    tbox:suggestion "Generalize the domain of 'tbox:hasReferenceEntity' to 'tbox:Entity'; generalize the range of the inverse 'tbox:isReferenceEntityFor' accordingly. Also, shorten the predicate names -- both in property declarations and assertions; i.e., 'hasReferenceEntity' should become 'hasReference' and 'isReferenceEntityFor' should become 'isReferenceFor'. Make labels and comments of the affected property declarations align with the change."@en .
+
+:isAreaOfNormalizationIssue a tbox:IssueEntity ;
+    tbox:target tbox:isAreaOf ;
+    tbox:critique "The range of 'tbox:isAreaOf' is strangely restricted."@en ;
+    tbox:suggestion "Generalize the range of 'tbox:isAreaOf' to 'tbox:Entity'; generalize the domain of the inverse 'tbox:hasArea' accordingly. Make labels and comments of the affected property declarations align with the change."@en .
+
+:isProcessedByToolIssue a tbox:IssueEntity ;
+    tbox:target tbox:isProcessedByTool ;
+    tbox:target tbox:processesArtifact ;
+    tbox:target tbox:processesArtifactKind ;
+    tbox:critique "There is a difference between the name of the property declared versus the name of the predicate used in assertions; also, the names of the predicate and its inverse can be streamlined. Processing is here always about tools being applied to artifacts and hence, the shorter name is sufficient."@en ;
+    tbox:suggestion "Use and declare 'tbox:processes' instead of 'tbox:processesArtifact' and 'tbox:processesArtifactKind'; use and declare 'tbox:isProcessedBy' instead of 'tbox:isProcessedByTool' for the inverse. Make labels and comments of the affected property declarations align with the change."@en .
+
+:hasSpaceGeneralizationIssue a tbox:IssueEntity ;
+    tbox:target tbox:hasSpace ;
+    tbox:critique "The domain of 'tbox:hasSpace' is overly restrictive."@en ;
+    tbox:suggestion "Generalize the domain of 'tbox:hasSpace' to 'tbox:Entity'; generalize the range of the inverse 'tbox:isSpaceOf' accordingly. Make labels and comments of the affected property declarations align with the change."@en .
+
+:supportsNormalizationIssue a tbox:IssueEntity ;
+    tbox:target tbox:supportsLanguage ;
+    tbox:target tbox:isSupportedByTool ;
+    tbox:critique "Support is strictly between tools and languages. No need for lengthy predicate names."@en ;
+    tbox:suggestion "Use 'tbox:supports' instead of 'tbox:supportsLanguage'; use 'tbox:isSupportedBy' instead of 'tbox:isSupportedByTool'.  Make labels and comments of the affected property declarations align with the change."@en .
+
+:servesDomainIssue a tbox:IssueEntity ;
+    tbox:target tbox:serves ;
+    tbox:critique "The range is currently restricted to 'tbox:FoundationalEntity', but the predicate is already used on 'tbox:LanguageEntity', which makes sense."@en ;
+    tbox:suggestion "Generalize the range accordingly; generalize the domain of 'tbox:isServedBy' accordingly. Make labels and comments of the affected property declarations align with the change."@en .
+
+:hasToolIssue a tbox:IssueEntity ;
+    tbox:target tbox:hasTool ;
+    tbox:target tbox:isToolOf ;
+    tbox:target tbox:hasToolKind ;
+    tbox:critique "'tbox:hasToolKind' is used, but not declared. 'tbox:hasTool' (and its inverse 'tbox:isToolOf') is declared, but not used. They are about the same thing."@en ;
+    tbox:suggestion "The uses of 'tbox:hasToolKind' are to be replaced by 'tbox:hasTool'."@en .
+
+:hasArtifactIssue a tbox:IssueEntity ;
+    tbox:target tbox:hasArtifact ;
+    tbox:target tbox:isArtifactOf ;
+    tbox:target tbox:hasArtifactKind ;
+    tbox:critique "'tbox:hasArtifactKind' is used, but not declared. 'tbox:hasArtifact' (and its inverse 'tbox:isArtifactOf') is declared, but not used. They are about the same thing."@en ;
+    tbox:suggestion "The uses of 'tbox:hasArtifactKind' are to be replaced by 'tbox:hasArtifact'."@en .
