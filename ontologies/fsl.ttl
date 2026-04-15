@@ -1,202 +1,246 @@
-# Prefixes of interest
-
 @prefix : <http://www.softlang.org/ontologies/sle/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix pedia: <https://en.wikipedia.org/wiki/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @base <http://www.softlang.org/ontologies/sle/> .
 
+#################################################################
+# Ontology
+#################################################################
 
-# This ontology
+<http://www.softlang.org/ontologies/sle>
+	rdf:type owl:Ontology ;
+	rdfs:comment "Taxonomy of software language engineering formalisms and approaches"@en .
 
-<http://www.softlang.org/ontologies/sle> rdf:type owl:Ontology .
+#################################################################
+# Classes (categories)
+#################################################################
 
+:SoftwareLanguage
+    a owl:Class ;
+    rdfs:label "Software language"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Software_language> ;
+    rdfs:comment "language used in software development"@en .
 
-# Introducing the root for formal tools in this ontology (taxonomy)
+:FormalGrammar
+    a owl:Class ;
+    rdfs:label "Formal grammar"@en ;
+    rdfs:subClassOf :FormalSystem ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Formal_grammar> ;
+    rdfs:comment "formal grammar for languages"@en .
 
-:Formal_tool rdfs:subClassOf owl:Class ;
-             rdfs:comment "The nominal root of this ontology"@en .
+:GenerativeGrammar
+    a owl:Class ;
+    rdfs:label "Generative grammar"@en ;
+    rdfs:subClassOf :FormalGrammar ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Formal_grammar#The_Chomsky_hierarchy> ;
+    rdfs:comment "grammar generating valid strings"@en .
 
+:AnalyticGrammar
+    a owl:Class ;
+    rdfs:label "Analytic grammar"@en ;
+    rdfs:subClassOf :FormalGrammar ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Formal_grammar#Analytic_grammars> ;
+    rdfs:comment "grammar recognizing valid strings"@en .
 
-# Keeping track of any issues with formal tools
+:Metalanguage
+    a owl:Class ;
+    rdfs:label "Metalanguage"@en ;
+    rdfs:subClassOf :SoftwareLanguage ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Metalanguage> ;
+    rdfs:comment "language for describing languages"@en .
 
-:issue rdf:type owl:AnnotationProperty ;
-       rdfs:comment "Keep track of issues with this ontology" ;
-       rdfs:domain :Formal_tool ;
-       rdfs:range rdf:langString .
+:FormalSystem
+    a owl:Class ;
+    rdfs:label "Formal system"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Formal_system> ;
+    rdfs:comment "symbolic deductive formal system"@en .
 
+:LambdaCalculus
+    a owl:Class ;
+    rdfs:label "Lambda calculus"@en ;
+    rdfs:subClassOf :FormalSystem ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Lambda_calculus> ;
+    rdfs:comment "formalism for function abstraction"@en .
 
-# Assocating formal tools with areas
+:LambdaCube
+    a owl:Class ;
+    rdfs:label "Lambda cube"@en ;
+    rdfs:subClassOf :LambdaCalculus ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Lambda_cube> ;
+    rdfs:comment "typed lambda calculus family"@en .
 
-:area rdf:type owl:AnnotationProperty ;
-       rdfs:comment "Associate formals tools with areas" ;
-       rdfs:domain :Formal_tool ;
-       rdfs:range :Area .
+:TypeTheory
+    a owl:Class ;
+    rdfs:label "Type theory"@en ;
+    rdfs:subClassOf :FormalSystem ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Type_theory> ;
+    rdfs:comment "formal theory of types"@en .
 
-:prio rdf:type owl:AnnotationProperty ;
-       rdfs:comment "Declare the priorities of areas" ;
-       rdfs:domain :Area ;
-       rdfs:range rdf:string .
+:FormalSemanticsApproach
+    a owl:Class ;
+    rdfs:label "Formal semantics approach"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Semantics_(programming_languages)#Approaches> ;
+    rdfs:comment "approach to programming language semantics"@en .
 
+:MetaprogrammingApproach
+    a owl:Class ;
+    rdfs:label "Metaprogramming approach"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Metaprogramming> ;
+    rdfs:comment "approach based on programs manipulating programs"@en .
 
-# Areas of interest
+:ProgramTransformationApproach
+    a owl:Class ;
+    rdfs:label "Program transformation approach"@en ;
+    rdfs:subClassOf :MetaprogrammingApproach ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Program_transformation> ;
+    rdfs:comment "approach for transforming programs"@en .
 
-:SLE rdf:type :Area ;
-     rdfs:comment "Software Language Engineering" ;
-     :prio "high".
+:SyntaxDirectedTranslationApproach
+    a owl:Class ;
+    rdfs:label "Syntax-directed translation approach"@en ;
+    rdfs:subClassOf :MetaprogrammingApproach ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Syntax-directed_translation> ;
+    rdfs:comment "approach driven by syntax structure"@en .
 
-:CC rdf:type :Area ;
-    rdfs:comment "Compiler Construction" ;
-    :prio "high".
+:ProgramLogic
+    a owl:Class ;
+    rdfs:label "Program logic"@en ;
+    rdfs:subClassOf :FormalSystem ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Category:Program_logic> ;
+    rdfs:comment "logic for reasoning about programs"@en .
 
-:PLT rdf:type :Area ;
-    rdfs:comment "Programming Language Theory" ;
-    :prio "high".
+:DescriptionLogic
+    a owl:Class ;
+    rdfs:label "Description logic"@en ;
+    rdfs:subClassOf :FormalSystem ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Description_logic> ;
+    rdfs:comment "logic family for structured knowledge"@en .
 
-:TCS rdf:type :Area ;
-    rdfs:comment "Theoretical Computer Science" ;
-    :prio "medium".
+:ProcessCalculus
+    a owl:Class ;
+    rdfs:label "Process calculus"@en ;
+    rdfs:subClassOf :FormalSystem ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Process_calculus> ;
+    rdfs:comment "calculus for concurrent processes"@en .
 
-:SE rdf:type :Area ;
-    rdfs:comment "Software Engineering" ;
-    :prio "low".
+:AbstractRewritingSystem
+    a owl:Class ;
+    rdfs:label "Abstract rewriting system"@en ;
+    rdfs:subClassOf :FormalSystem ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Abstract_rewriting_system> ;
+    rdfs:comment "abstract formal rewriting framework"@en .
 
-:FM rdf:type :Area ;
-    rdfs:comment "Formal Methods" ;
-    :prio "low".
+:ModelingLanguage
+    a owl:Class ;
+    rdfs:label "Modeling language"@en ;
+    rdfs:subClassOf :SoftwareLanguage ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Modeling_language> ;
+    rdfs:comment "language for modeling systems"@en .
 
-:KR rdf:type :Area ;
-    rdfs:comment "Knowledge Representation & Reasoning" ;
-    :prio "low".
+#################################################################
+# Individuals (entities)
+#################################################################
 
-:CL rdf:type :Area ;
-    rdfs:comment "Computational Linguistics" ;
-    :prio "low".
+:ContextFreeGrammar
+    a owl:NamedIndividual , :GenerativeGrammar ;
+    rdfs:label "Context-free grammar"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Context-free_grammar> ;
+    rdfs:comment "grammar with context-free productions"@en .
 
-:NLP rdf:type :Area ;
-    rdfs:comment "Natural Language Processing" ;
-    :prio "low".
+:ParsingExpressionGrammar
+    a owl:NamedIndividual , :AnalyticGrammar ;
+    rdfs:label "Parsing expression grammar"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Parsing_expression_grammar> ;
+    rdfs:comment "recognition-based formal grammar"@en .
 
+:ExtendedBackusNaurForm
+    a owl:NamedIndividual , :Metalanguage ;
+    rdfs:label "Extended Backus-Naur form"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Extended_Backus-Naur_form> ;
+    rdfs:comment "metalanguage for grammar notation"@en .
 
-# Points of reference
+:RegularGrammar
+    a owl:NamedIndividual , :GenerativeGrammar ;
+    rdfs:label "Regular grammar"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Regular_grammar> ;
+    rdfs:comment "grammar for regular languages"@en .
 
-:Context-free_grammar rdf:type :Formal_tool ;
-		      rdfs:comment "A fundamental formalism in parsing" ;
-		      owl:sameAs pedia:Context-free_grammar ;
-		      :area :CC ;
-		      :area :SLE .
+:AttributeGrammar
+    a owl:NamedIndividual , :FormalGrammar , :SyntaxDirectedTranslationApproach ;
+    rdfs:label "Attribute grammar"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Attribute_grammar> ;
+    rdfs:comment "grammar with attributes and rules"@en .
 
-:Parsing_expression_grammar rdf:type :Formal_tool ;
-               rdfs:comment "A more modern approach to parsing"@en ;
-	       owl:sameAs pedia:Parsing_expression_grammar ;
-	       :area :CC ;
-	       :area :SLE .
+:TermRewritingSystem
+    a owl:NamedIndividual , :AbstractRewritingSystem , :ProgramTransformationApproach ;
+    rdfs:label "Term rewriting system"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Rewriting#Term_rewriting_systems> ;
+    rdfs:comment "rewriting system over algebraic terms"@en .
 
-:Extended_Backus\-Naur_form rdf:type :Formal_tool ;
-			    rdfs:comment "A metasyntax (i.e., a syntax for syntaxes)"@en ;
-			    owl:sameAs pedia:Extended_Backus\-Naur_form ;
-		      	    :area :CC ;
-		      	    :area :SLE .
+:UntypedLambdaCalculus
+    a owl:NamedIndividual , :LambdaCalculus ;
+    rdfs:label "Untyped lambda calculus"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Lambda_calculus> ;
+    rdfs:comment "lambda calculus without types"@en .
 
-:Regular_grammar rdf:type :Formal_tool ;
-		 rdfs:comment "A fundamental formalism in parsing, in fact, scanning"@en ;
-		 owl:sameAs pedia:Regular_grammar ;
-		 :area :CC ;
-		 :area :SLE .
+:SimplyTypedLambdaCalculus
+    a owl:NamedIndividual , :LambdaCube , :TypeTheory ;
+    rdfs:label "Simply typed lambda calculus"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Simply_typed_lambda_calculus> ;
+    rdfs:comment "typed lambda calculus with simple types"@en .
 
-:Attribute_grammar rdf:type :Formal_tool ;
-		   rdfs:comment "An important language-implementation technique"@en ;
-		   owl:sameAs pedia:Attribute_grammar ;
-		   :area :CC ;
-		   :area :SLE .
+:SystemF
+    a owl:NamedIndividual , :LambdaCube , :TypeTheory ;
+    rdfs:label "System F"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/System_F> ;
+    rdfs:comment "polymorphic typed lambda calculus"@en .
 
-:Term_rewriting_system rdf:type :Formal_tool ;
-                  rdfs:comment "A formal and rule-based transformation approach"@en ;
-		  owl:sameAs pedia:Rewriting\#Term_rewriting_systems ;
-		  :area :CC ;
-		  :area :SLE .
+:DenotationalSemantics
+    a owl:NamedIndividual , :FormalSemanticsApproach ;
+    rdfs:label "Denotational semantics"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Denotational_semantics> ;
+    rdfs:comment "semantics via mathematical denotations"@en .
 
-:Lambda_calculus rdf:type :Formal_tool ;
-		 rdfs:comment "All lambda calculi used across PLT, TCS, etc."@en ;
-		 rdfs:seeAlso pedia:Lambda_calculus ;
-		 :issue "Conflation of the basic, untyped lambda calculus vs. all lambda calculi"@en ;
-		 :area :PLT .
+:OperationalSemantics
+    a owl:NamedIndividual , :FormalSemanticsApproach ;
+    rdfs:label "Operational semantics"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Operational_semantics> ;
+    rdfs:comment "semantics via execution steps"@en .
 
-:Untyped_lambda_calculus rdf:type :Formal_tool ;
-		   	 rdfs:comment "The basic, untyped lambda calculus"@en ;
-		  	 rdfs:seeAlso pedia:Lambda_calculus ;
-			 :issue "Conflation of the basic untyped lambda calculus vs. all lambda calculi"@en ;
-		 	 :area :PLT .
+:AxiomaticSemantics
+    a owl:NamedIndividual , :FormalSemanticsApproach ;
+    rdfs:label "Axiomatic semantics"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Axiomatic_semantics> ;
+    rdfs:comment "semantics via logical axioms"@en .
 
-:Simply_typed_lambda_calculus rdf:type :Formal_tool ;
-			      rdfs:comment "The simply typed lambda calculus"@en ;
-			      owl:sameAs pedia:Simply_typed_lambda_calculus ;
-			      :area :PLT .
+:CommunicatingSequentialProcesses
+    a owl:NamedIndividual , :ProcessCalculus ;
+    rdfs:label "Communicating sequential processes"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Communicating_sequential_processes> ;
+    rdfs:comment "process algebra for communication"@en .
 
-:System_F rdf:type :Formal_tool ;
-	  rdfs:comment "A lambda calculus with polymorphic types"@en ;
-	  owl:sameAs pedia:System_F ;
-	  :area :PLT .
+:CalculusOfCommunicatingSystems
+    a owl:NamedIndividual , :ProcessCalculus ;
+    rdfs:label "Calculus of communicating systems"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Calculus_of_communicating_systems> ;
+    rdfs:comment "calculus for communicating concurrent systems"@en .
 
-:Lambda_cube rdf:type :Formal_tool ;
-		  rdfs:comment "All typed lambda calculi"@en ;
-		  owl:sameAs pedia:Lambda_cube ;
-		  :area :PLT .
+:UMLStateMachine
+    a owl:NamedIndividual , :ModelingLanguage ;
+    rdfs:label "UML state machine"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/UML_state_machine> ;
+    rdfs:comment "behavioral state machine notation in UML"@en .
 
-:Denotational_semantics rdf:type :Formal_tool ;
-		     	rdfs:comment "The denotational style of semantics specification"@en ;
-			owl:sameAs pedia:Denotational_semantics ;
-		 	:area :PLT .
+:HoareLogic
+    a owl:NamedIndividual , :ProgramLogic ;
+    rdfs:label "Hoare logic"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Hoare_logic> ;
+    rdfs:comment "program logic using Hoare triples"@en .
 
-:Operational_semantics rdf:type :Formal_tool ;
-		       rdfs:comment "The operational style of semantics specification"@en ;
-	   	       owl:sameAs pedia:Operational_semantics ;
-		       :area :PLT .
-
-:Axiomatic_semantics rdf:type :Formal_tool ;
-		     rdfs:comment "The axiomatic style of semantics specification"@en ;
-		     owl:sameAs pedia:Axiomatic_semantics ;
-		     :area :PLT .
-
-:Process_calculus rdf:type :Formal_tool ;
-		  rdfs:comment "All calculi for modelling concurrent systems"@en ;
-		  owl:sameAs pedia:Process_calculus ;
-		  :area :PLT ;
-		  :area :TCS .
-
-:Communicating_sequential_processes rdf:type :Formal_tool ;
-				    rdfs:comment "A concrete calculus on concurrency"@en ;
-				    owl:sameAs pedia:Communicating_sequential_processes ;
-		  		    :area :PLT ;
-		  		    :area :TCS .
-
-:Calculus_of_communicating_systems rdf:type :Formal_tool ;
-				   rdfs:comment "A concrete calculus on concurrency"@en ;
-				   owl:sameAs pedia:Calculus_of_communicating_systems ;
-		  		   :area :PLT ;
-		  		   :area :TCS .
-
-:UML_state_machine rdf:type :Formal_tool ;
-		   rdfs:comment "A modeling language for finite automata"@en ;
-		   owl:sameAs pedia:UML_state_machine ;
-		   :area :FM ;
-		   :area :SE .
-
-:Hoare_logic rdf:type :Formal_tool ;
-	     rdfs:comment "A prominent approach for program verification"@en ;
-	     owl:sameAs pedia:Hoare_logic ;
-	     :area :FM .
-
-:Description_logic rdf:type :Formal_tool ;
-		   rdfs:comment "A prominent family of logics for ontologies"@en ;
-		   owl:sameAs pedia:Description_logic ;
-		   :area :KR .
-
-:Dependency_grammar rdf:type :Formal_tool ;
-		    rdfs:comment "Grammatical theories based on dependency"@en ;
-		    owl:sameAs pedia:Dependency_grammar ;
-		    :area :CL ;
-		    :area :NLP .
+:DependencyGrammar
+    a owl:NamedIndividual , :FormalGrammar ;
+    rdfs:label "Dependency grammar"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Dependency_grammar> ;
+    rdfs:comment "grammar based on dependency relations"@en .
