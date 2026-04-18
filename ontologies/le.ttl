@@ -3,10 +3,15 @@
 @prefix fe: <http://www.softlang.org/ontologies/fe#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pe: <http://www.softlang.org/ontologies/pe#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
 
 <http://www.softlang.org/ontologies/le> a owl:Ontology ;
+    tbox:commentingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:formattingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:linkingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:metamodelingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
     rdfs:comment "Programming languages are maintained in the pe module; this module keeps non-programming software languages and broad language-kind taxonomies."@en,
         "Sub-ontology / ABox for software languages"@en ;
     owl:imports <http://www.softlang.org/ontologies/ce>,
@@ -704,3 +709,21 @@
         ce:SLE ;
     tbox:hasSpace ce:Markupware ;
     foaf:isPrimaryTopicOf <https://en.wikipedia.org/wiki/YAML> .
+
+[ a owl:AllDisjointClasses ;
+    owl:members ( :BuildScriptingLanguage :ConfigurationLanguage :InterfaceDescriptionLanguage :MappingLanguage :MarkupLanguage :Metalanguage :ModelingLanguage :OntologyLanguage :ProofLanguage :RequirementsSpecificationLanguage :RuleLanguage :SchemaLanguage :SemanticDataModelLanguage pe:ProgrammingLanguage ) ] .
+
+:BuildScriptingLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:ConfigurationLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:InterfaceDescriptionLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:MappingLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:MarkupLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:Metalanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:ModelingLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:OntologyLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:ProofLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:RequirementsSpecificationLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:RuleLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:SchemaLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+:SemanticDataModelLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .
+pe:ProgrammingLanguage owl:disjointWith [ a owl:Class ; owl:unionOf ( :ConstraintLanguage :QueryLanguage :TransformationLanguage :DataManipulationLanguage :DataDefinitionLanguage ) ] .

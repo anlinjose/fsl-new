@@ -7,6 +7,10 @@
 @prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
 
 <http://www.softlang.org/ontologies/pe> a owl:Ontology ;
+    tbox:commentingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:formattingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:linkingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:metamodelingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
     :profilingPolicy """
 Programming-language profiling uses only native support and standard-library support.
 Refined concepts are asserted selectively rather than exhaustively.
@@ -219,7 +223,7 @@ Paradigm-based subclassing of programming languages is not used; paradigms are r
         ce:Branching,
         ce:CallByValue,
         ce:Closures,
-        ce:CodeGeneration,
+        ce:CodeGenerationConcept,
         ce:CompositionVsInheritance,
         ce:ComputationalParadigmsAndEvaluationModels,
         ce:Concurrency,
@@ -364,7 +368,7 @@ Paradigm-based subclassing of programming languages is not used; paradigms are r
         ce:Branching,
         ce:CallByNeed,
         ce:Closures,
-        ce:CodeGeneration,
+        ce:CodeGenerationConcept,
         ce:ComputationalParadigmsAndEvaluationModels,
         ce:Concurrency,
         ce:ControlFlow,
@@ -584,7 +588,7 @@ Paradigm-based subclassing of programming languages is not used; paradigms are r
         tbox:LanguageEntity,
         owl:NamedIndividual ;
     rdfs:label "Perl"@en ;
-    ce:nativelySupports ce:CodeGeneration,
+    ce:nativelySupports ce:CodeGenerationConcept,
         ce:DynamicTyping,
         ce:Exceptions,
         ce:ImperativeParadigm,

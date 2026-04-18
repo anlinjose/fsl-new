@@ -9,6 +9,10 @@
 @prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
 
 <http://www.softlang.org/ontologies/te> a owl:Ontology ;
+    tbox:commentingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:formattingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:linkingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:metamodelingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
     rdfs:comment "Sub-ontology / ABox for software tools"@en ;
     owl:imports <http://www.softlang.org/ontologies/pe>,
         <http://www.softlang.org/ontologies/tbox> .
@@ -411,3 +415,8 @@
     rdfs:label "SWI-Prolog"@en ;
     rdfs:comment "logic programming system for Prolog and related symbolic reasoning tasks"@en ;
     foaf:isPrimaryTopicOf <https://en.wikipedia.org/wiki/SWI-Prolog> .
+
+:JSONProcessor owl:disjointWith :XMLProcessor .
+
+[ a owl:AllDisjointClasses ;
+    owl:members ( :Reasoner :ParserGenerator :ProofAssistant :RefactoringTool :RequirementsTool ) ] .

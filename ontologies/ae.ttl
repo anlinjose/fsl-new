@@ -7,6 +7,10 @@
 @prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
 
 <http://www.softlang.org/ontologies/ae> a owl:Ontology ;
+    tbox:commentingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:formattingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:linkingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:metamodelingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
     rdfs:comment "Sub-ontology / ABox for software artifacts"@en ;
     owl:imports <http://www.softlang.org/ontologies/pe>,
         <http://www.softlang.org/ontologies/tbox> .
@@ -97,10 +101,14 @@
     tbox:elementOf le:ProofLanguage ;
     rdfs:subClassOf tbox:SoftwareArtifact .
 
+:SemanticDataArtifact a tbox:ArtifactEntity ;
+    rdfs:label "Semantic data artifact"@en ;
+    rdfs:subClassOf tbox:SoftwareArtifact .
+
 :PropertyGraphArtifact a tbox:ArtifactEntity ;
     rdfs:label "Property graph artifact"@en ;
     tbox:elementOf le:PropertyGraphDataModelLanguage ;
-    rdfs:subClassOf tbox:SoftwareArtifact .
+    rdfs:subClassOf :SemanticDataArtifact .
 
 :RDFGraphArtifact a tbox:ArtifactEntity ;
     rdfs:label "RDF graph artifact"@en ;
@@ -117,7 +125,7 @@
 :RelationalQueryArtifact a tbox:ArtifactEntity ;
     rdfs:label "Relational query artifact"@en ;
     tbox:elementOf le:SQLQuery ;
-    rdfs:subClassOf tbox:SoftwareArtifact .
+    rdfs:subClassOf :SemanticDataArtifact .
 
 :RelationalSchemaArtifact a tbox:ArtifactEntity ;
     rdfs:label "Relational schema artifact"@en ;
@@ -154,3 +162,14 @@
     tbox:classifies :XMLDocumentArtifact ;
     tbox:elementOf le:XMLSchemaLanguage ;
     rdfs:subClassOf tbox:SoftwareArtifact .
+
+:XMLDocumentArtifact owl:disjointWith :JSONDocumentArtifact .
+
+:XMLSchemaArtifact owl:disjointWith :JSONSchemaArtifact .
+
+:GrammarArtifact owl:disjointWith :MetamodelArtifact .
+
+:GrammarOfGrammarsArtifact owl:disjointWith :MetamodelArtifact .
+
+[ a owl:AllDisjointClasses ;
+    owl:members ( :SemanticDataArtifact :ModelArtifact :ProgramArtifact ) ] .

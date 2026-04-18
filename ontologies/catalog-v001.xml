@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <uri id="User Entered Import Resolution" name="http://www.softlang.org/ontologies/te" uri="te.ttl"/>
-    <uri id="User Entered Import Resolution" name="http://www.softlang.org/ontologies/re" uri="re.ttl"/>
     <uri id="User Entered Import Resolution" name="http://www.softlang.org/ontologies/le" uri="le.ttl"/>
     <uri id="User Entered Import Resolution" name="http://www.softlang.org/ontologies/pe" uri="pe.ttl"/>
     <uri id="User Entered Import Resolution" name="http://www.softlang.org/ontologies/fe" uri="fe.ttl"/>
