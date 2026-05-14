@@ -54,4 +54,4 @@ Intermediate SHAs:
 * h. [Language concept tuning](https://github.com/softlang/fsl/commit/e7fe9703783420fb9fc55c3da3f53bdb37588b72)
 * i. [SPARQL-based validation](https://github.com/softlang/fsl/commit/b9183b7361540379873ab556966bf83b30fe3c67)
 * j. [Filing, again, a number of issues](https://github.com/softlang/fsl/commit/6a103d162fc58e6c4d75ca6d9df85e224516b6d5)
-
+* k. [Resolution, again, of the filed issues](https://github.com/softlang/fsl/commit/406698295c61bdc07303454576198383d5a917a6)
