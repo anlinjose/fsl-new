@@ -19,6 +19,7 @@ all:
 	make phase9h
 	make phase9i
 	make phase9j
+	make phase9k
 
 phase1:
 	git clone ${fsl} phase1
@@ -92,7 +93,10 @@ phase9j:
 	git clone ${fsl} phase9j
 	cd phase9j; git checkout 6a103d162fc58e6c4d75ca6d9df85e224516b6d5
 
+phase9k:
+	git clone ${fsl} phase9k
+	cd phase9k; git checkout 406698295c61bdc07303454576198383d5a917a6
+
 clean:
 	rm -rf phase*
-
 
