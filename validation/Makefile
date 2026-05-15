@@ -9,11 +9,11 @@ all-tbox:
 	make ClassDeclarationsMustHaveFoafLinkShape.tbox
 	make PropertyDeclarationsMustHaveCommentShape.tbox
 	make PropertyDeclarationsMustHaveFoafLinkShape.tbox
+	make MetamodelingShapes.tbox
 
 all-abox:
 	make TechnologySpacesMustBeSpecifiedShape.abox
 	make TechnologySpacesMustHaveConformsToShape.abox
-	make MetamodelingShapes.abox
 	make EngineeringActivitiesMustBeSpecifiedShape.abox
 	make MethodologicalApproachesMustBeSpecifiedShape.abox
 
