@@ -95,7 +95,7 @@ phase9j:
 
 phase9k:
 	git clone ${fsl} phase9k
-	cd phase9k; git checkout 406698295c61bdc07303454576198383d5a917a6
+	cd phase9k; git checkout 56d64f9b252ba935103812effc09f9cc2f300354
 
 clean:
 	rm -rf phase*
