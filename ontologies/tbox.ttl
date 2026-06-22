@@ -76,7 +76,6 @@
 
 :PropertyEntity rdfs:subClassOf :Entity ;
     rdfs:label "Property entity"@en ;
-    rdfs:comment "Ontological entity used to represent property declarations that participate in relations like other modeled entities"@en .
 
 
 :IssueEntity rdfs:subClassOf :Entity ;
