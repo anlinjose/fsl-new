@@ -663,3 +663,4 @@
 
 :MyTestClass
     a owl:Class .
+    rdfs:comment "Temporary test class." .
