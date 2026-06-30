@@ -660,3 +660,6 @@
     rdfs:range :LanguageSupportKind ;
     rdfs:comment "Relates a reified assertion about language concepts with the type of support"@en ;
     foaf:page <https://en.wikipedia.org/wiki/Category:Programming_language_concepts> .
+
+:MyTestClass
+    a owl:Class .
