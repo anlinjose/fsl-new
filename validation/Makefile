@@ -19,7 +19,7 @@ all-abox:
 
 # Checking annotations on tbox only works reliably with consuming it as the main graph
 %.tbox:
-	-@python3 -m pyshacl \
+	@python3 -m pyshacl \
 	  -s $*.ttl \
 	  ${master}/tbox.ttl \
 	  > $*.log
